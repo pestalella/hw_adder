@@ -1,3 +1,5 @@
+`ifndef ADDER_SV
+`define ADDER_SV
 
 module one_bit_full_adder (
     a,
@@ -8,9 +10,9 @@ module one_bit_full_adder (
 );
     input a, b, cin;
     output sum, cout;
+
     assign sum = a ^ b ^ cin;
-//    assign cout = (a & cin) | (b & cin) | (a & b);
-    assign cout = 0;//(b & cin) | (a & b);
+    assign cout = (a & cin) | (b & cin) | (a & b);
 endmodule
 
 module four_bit_adder (
@@ -34,3 +36,4 @@ module four_bit_adder (
     one_bit_full_adder u3(.a(op_a[3]), .b(op_b[3]),       .cin(c3), .sum(sum[3]), .cout(carry_out));
 endmodule
 
+`endif

@@ -1,3 +1,8 @@
+`ifndef ADDER_TRANS_SV
+`define ADDER_TRANS_SV
+
+event transaction_done, generation_done;
+
 class adder_transaction;
     logic [3:0] op_a;
     logic [3:0] op_b;
@@ -14,3 +19,5 @@ class adder_transaction;
     //     $display("-------------------------");
     // endfunction 
 endclass
+
+`endif

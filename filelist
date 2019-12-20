@@ -1,8 +1,0 @@
-adder_interface.sv
-adder_trans.sv
-adder_sb.sv
-adder.sv
-driver.sv
-generator.sv
-env.sv
-testbench.sv

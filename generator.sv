@@ -1,3 +1,8 @@
+`ifndef GENERATOR_SV
+`define GENERATOR_SV
+
+`include "adder_trans.sv"
+
 class generator;
     adder_transaction trans;
     mailbox gen2driv;
@@ -16,6 +21,9 @@ class generator;
                 gen2driv.put(trans);
             end
         end
+        -> generation_done;
         $display("-- GENERATOR COMPLETED");
     endtask
 endclass
+
+`endif

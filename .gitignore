@@ -1,4 +1,8 @@
 waves.shm
 xcelium.d
 xrun*
+indago*
+.indago*
+.simvision
+*.log
 

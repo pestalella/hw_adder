@@ -1,11 +1,9 @@
+
+`include "adder.sv"
+`include "adder_trans.sv"
+`include "env.sv"
+
 module adder_tb;
-
-    reg [3:0] a;
-    reg [3:0] b;
-    reg ci;
-    wire [3:0] sum;
-    wire co;
-
     environment env;
     adder_intf add_if();
 
@@ -22,11 +20,20 @@ module adder_tb;
     end
 
     initial begin
-        $display("Adder TB!");
-        $display("+-----------------------------+");
-        $display("|  a  |  b  | ci  | co  | sum |");
-        $display("+-----------------------------+");
-        $monitor("|  %h  |  %h  |  %h  |  %h  |  %h  |",
-                 add_if.op_a, add_if.op_b, add_if.carry_in, add_if.carry_out, add_if.sum);
+        @(generation_done)
+        $display("Pattern generation completed");
+        $display("============================");
+        $display("Completed transactions: %d", env.scb.no_transactions);
+        $display("  Correct transactions: %d", env.scb.correct_transactions);
+        $display("   Failed transactions: %d", env.scb.failed_transactions);
     end
+
+    // initial begin
+    //     $display("Adder TB!");
+    //     $display("+-----------------------------+");
+    //     $display("|  a  |  b  | ci  | co  | sum |");
+    //     $display("+-----------------------------+");
+    //     $monitor("|  %h  |  %h  |  %h  |  %h  |  %h  |",
+    //              add_if.op_a, add_if.op_b, add_if.carry_in, add_if.carry_out, add_if.sum);
+    // end
 endmodule
